@@ -25,7 +25,7 @@ const newUrl = 'https://tecnoshare.sharepoint.com/sites';
 
 const beersReplaced = beers.map(b => {
     b.label = b.label.replace(urlToReplace, newUrl);
-    const newFileName = b.name.toLowerCase().replace(" ", "_");
+    const newFileName = b.name.toLowerCase().replace(/\s/g, "_");
     const oldFileName = b.label.split("/").pop();
     const extension = b.label.split(".").pop();
     b.label = b.label.replace(oldFileName, newFileName + '.' + extension);
