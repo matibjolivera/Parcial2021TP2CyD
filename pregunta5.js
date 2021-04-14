@@ -20,3 +20,16 @@ const beers = [
     { name: 'Stolen Fruit', abv: 4.6, label: 'https://s3.amazonaws.com/brewerydbapi/beer/YGT30k/upload_uVCHP7-large.png', type: 'Wheat' },
 ];
 
+const urlToReplace = 'https://s3.amazonaws.com/brewerydbapi';
+const newUrl = 'https://tecnoshare.sharepoint.com/sites';
+
+const beersReplaced = beers.map(b => {
+    b.label = b.label.replace(urlToReplace, newUrl);
+    const newFileName = b.name.toLowerCase().replace(" ", "_");
+    const oldFileName = b.label.split("/").pop();
+    const extension = b.label.split(".").pop();
+    b.label = b.label.replace(oldFileName, newFileName + '.' + extension);
+    return b;
+});
+
+console.log(beersReplaced);
