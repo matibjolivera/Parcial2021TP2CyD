@@ -22,10 +22,16 @@
    * @param {*} inventors 
    */
   function addDiscoveries(inventor, discoveries, inventors){
-      
+      let i = inventors.find(o => o.last === inventor);
+      if (i !== undefined) {
+          i.discoveries = discoveries;
+      } else {
+          console.log("No existe el inventor con apellido: " + inventor)
+      }
+      return inventors;
   }
 
-  console.log(addDiscoveries('Einstein', 
+  console.log(addDiscoveries('Einstein',
   ['Teoría de la relatividad especial','Equivalencia entre masa y energía','Teoría de la relatividad general'], inventors
   ));
 
