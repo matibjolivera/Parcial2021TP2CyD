@@ -16,12 +16,10 @@
 
 const sale = function (article, cant){
      let stock = inventory[article];
-     let response;
-     if (cant <= stock) {
+     let response = 500;
+     if (stock !== undefined && cant <= stock) {
          inventory[article] = stock - cant;
          response = 200;
-     } else {
-         response = 500;
      }
      return response;
 }
